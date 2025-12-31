@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ertkuvyafv8"]
+
+[ext_resource type="Script" uid="uid://cy60hx7cwx41t" path="res://scripts/MicrogameTimer.gd" id="1_hsnqb"]
+
+[node name="MicrogameTimer" type="Node2D"]
+script = ExtResource("1_hsnqb")
+
+[node name="TimerShadow" type="Polygon2D" parent="."]
+position = Vector2(109.99999, 0)
+scale = Vector2(730, 30)
+color = Color(0, 0.88235295, 1, 1)
+polygon = PackedVector2Array(0, -1, 1, -1, 1, 1, 0, 1)
+
+[node name="TimerBar" type="Polygon2D" parent="."]
+position = Vector2(109.99999, 0)
+scale = Vector2(720, 20)
+polygon = PackedVector2Array(0, -1, 1, -1, 1, 1, 0, 1)
+
+[node name="HoloLogo" type="Polygon2D" parent="."]
+scale = Vector2(16, 16)
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(10, 0, -5, 8.66, -5, -8.66)
+
+[node name="TimeValue" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -11.5
+offset_right = 16.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 72
+text = "10.0"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(433, -3)

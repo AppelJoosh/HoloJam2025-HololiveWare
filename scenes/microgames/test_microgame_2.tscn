@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlkobsugtchu7"]
+
+[ext_resource type="Script" uid="uid://dcsg86gk5iqif" path="res://scripts/MicrogameBase.gd" id="1_cks6i"]
+
+[node name="test_microgame" type="Control"]
+editor_description = "alt instance of a microgame using Control nodes instead of Node2D nodes, mainly because Control nodes are easier to resize"
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cks6i")
+
+[node name="Camera2D" type="Camera2D" parent="."]

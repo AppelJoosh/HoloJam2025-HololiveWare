@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cw7xhtxcbhd37"]
+[gd_scene load_steps=2 format=3 uid="uid://cw7xhtxcbhd37"]
+
+[ext_resource type="Script" uid="uid://buir7ajkfvt7c" path="res://scenes/microgames/test_microgame.gd" id="1_sq2yu"]
 
 [node name="test_microgame" type="Node2D"]
+script = ExtResource("1_sq2yu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
