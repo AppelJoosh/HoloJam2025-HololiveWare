@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgvwo75ug0sdb"]
+
+[ext_resource type="Texture2D" uid="uid://8okwobq3o75s" path="res://sprites/microgames/catch-the-light/drophand_spritesheet.png" id="1_ubn0s"]
+
+[node name="Catch_DropHand" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ubn0s")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
