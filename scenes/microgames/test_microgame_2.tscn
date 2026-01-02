@@ -1,11 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlkobsugtchu7"]
+[gd_scene load_steps=4 format=3 uid="uid://dlkobsugtchu7"]
 
-[ext_resource type="Script" uid="uid://dcsg86gk5iqif" path="res://scripts/MicrogameBase.gd" id="1_cks6i"]
+[ext_resource type="Script" uid="uid://ddmhctuiyacwc" path="res://scenes/microgames/test_microgame_2.gd" id="1_lgn76"]
+[ext_resource type="Texture2D" uid="uid://dunw686atd167" path="res://sprites/placeholdertoforcefolder.png" id="2_lgn76"]
+[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_e13cq"]
 
 [node name="test_microgame" type="Control"]
 editor_description = "alt instance of a microgame using Control nodes instead of Node2D nodes, mainly because Control nodes are easier to resize"
+custom_minimum_size = Vector2(512, 384)
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_cks6i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_lgn76")
+
+[node name="Background" type="Polygon2D" parent="."]
+scale = Vector2(512, 512)
+polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)
+vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -67)
+texture = ExtResource("2_lgn76")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 32.128
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+editor_description = "ensures that the timer stays on the bottom left corner of the subviewport (window)"
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("3_e13cq")]
+scale = Vector2(0.4, 0.4)
+
+[node name="WinBlock" type="ColorRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 64)
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.2
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = 32.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/WinBlock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+text = "Win"
+horizontal_alignment = 1
+
+[node name="FailBlock" type="ColorRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 64)
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/FailBlock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+text = "Fail"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="CanvasLayer/WinBlock" to="." method="_on_win_block_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/FailBlock" to="." method="_on_fail_block_mouse_entered"]

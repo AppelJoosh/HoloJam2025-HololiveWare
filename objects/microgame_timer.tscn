@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cy60hx7cwx41t" path="res://scripts/MicrogameTimer.gd" id="1_hsnqb"]
 
 [node name="MicrogameTimer" type="Node2D"]
+position = Vector2(32, -16)
 script = ExtResource("1_hsnqb")
 
 [node name="TimerShadow" type="Polygon2D" parent="."]
@@ -37,6 +38,3 @@ size_flags_horizontal = 4
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 72
 text = "10.0"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(433, -3)
