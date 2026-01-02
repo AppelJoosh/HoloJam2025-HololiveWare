@@ -40,6 +40,7 @@ anchor_bottom = 1.0
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
 
 [node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("3_e13cq")]
 scale = Vector2(0.4, 0.4)
@@ -108,6 +109,19 @@ theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 36
 text = "Fail"
 horizontal_alignment = 1
+
+[node name="Blurb" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 84
+text = "Objective!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Blurb"]
 
 [connection signal="mouse_entered" from="CanvasLayer/WinBlock" to="." method="_on_win_block_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/FailBlock" to="." method="_on_fail_block_mouse_entered"]
