@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brsitoon556ps"]
 
 [ext_resource type="Script" uid="uid://sddxntplkbmr" path="res://scripts/Interim.gd" id="1_4awoh"]
-[ext_resource type="PackedScene" uid="uid://dlkobsugtchu7" path="res://scenes/microgames/test_microgame_2.tscn" id="1_6ve1g"]
+[ext_resource type="PackedScene" uid="uid://dlkobsugtchu7" path="res://scenes/microgames/test_microgame_3.tscn" id="1_6ve1g"]
 
 [sub_resource type="Gradient" id="Gradient_4awoh"]
 
