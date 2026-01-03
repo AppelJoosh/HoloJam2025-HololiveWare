@@ -15,6 +15,9 @@ var time: float = 10.0
 
 signal on_timeout()
 
+func _ready() -> void:
+	time = max_time
+
 func _physics_process(delta: float) -> void:
 	if (!is_active):
 		return

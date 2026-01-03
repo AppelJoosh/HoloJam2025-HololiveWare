@@ -1,6 +1,6 @@
 extends Area2D
 
-signal release()
+signal release
 
 func _ready() -> void:
 	$Timer.start(randi_range(1, 3))

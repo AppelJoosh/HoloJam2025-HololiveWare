@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal win_flag
+
 var held: bool = true
 var grabbable: bool = false
 
@@ -9,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -20,12 +22,12 @@ func _on_catch_drop_hand_release() -> void:
 func _on_catch_player_hand_catch() -> void:
 	if grabbable:
 		set_freeze_enabled(true)
-		
+		win_flag.emit()
 
 
-func _on_catch_player_hand_body_entered(body: Node2D) -> void:
+func _on_catch_player_hand_body_entered(_body: Node2D) -> void:
 	grabbable = true
 
 
-func _on_catch_player_hand_body_exited(body: Node2D) -> void:
+func _on_catch_player_hand_body_exited(_body: Node2D) -> void:
 	grabbable = false
