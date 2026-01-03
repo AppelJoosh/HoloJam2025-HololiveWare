@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4h4otke5rwv"]
 
 [ext_resource type="Script" uid="uid://dcsg86gk5iqif" path="res://scripts/MicrogameBase.gd" id="1_cks6i"]
-[ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_drop_hand.tscn" id="2_joirm"]
+[ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_the_light/catch_drop_hand.tscn" id="2_joirm"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_e13cq"]
-[ext_resource type="PackedScene" uid="uid://5r551a41vkn3" path="res://scenes/microgames/catch_player_hand.tscn" id="3_m7owm"]
-[ext_resource type="PackedScene" uid="uid://kbjs48g8avdj" path="res://scenes/microgames/catch_glowstick.tscn" id="4_hflaq"]
+[ext_resource type="PackedScene" uid="uid://5r551a41vkn3" path="res://scenes/microgames/catch_the_light/catch_player_hand.tscn" id="3_m7owm"]
+[ext_resource type="PackedScene" uid="uid://kbjs48g8avdj" path="res://scenes/microgames/catch_the_light/catch_glowstick.tscn" id="4_hflaq"]
 
 [node name="test_microgame" type="Control"]
 editor_description = "alt instance of a microgame using Control nodes instead of Node2D nodes, mainly because Control nodes are easier to resize"
