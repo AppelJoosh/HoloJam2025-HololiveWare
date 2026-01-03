@@ -24,9 +24,14 @@ var exit_timer = Timer.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.on_timeout.connect(on_finish.emit.bind(false));
+	on_finish.connect(deactivate_on_end)
 	
 func lose_on_time_up():
 	on_finish.emit(false)
+
+func deactivate_on_end(_win_state: bool):
+	timer.is_active = false
+	is_active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
