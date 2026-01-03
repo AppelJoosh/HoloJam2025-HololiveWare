@@ -40,23 +40,30 @@ func add_new_microgame(microgameId: int) -> Microgame:
 	
 	microgame_container.add_child(subviewport_container)
 	
-	new_microgame.on_finish.connect(on_microgame_finish)
+	new_microgame.on_finish.connect(on_microgame_finish.bind(subviewport_container), ConnectFlags.CONNECT_ONE_SHOT)
 	
 	return new_microgame
 	
-func on_microgame_finish(success: bool):
+func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
 	if success:
 		set_score(score + 1)
 	else:
 		lives -= 1
-		
+
+	# despawn the old completed microgame
+	var old_microgame_despawn_timer = Timer.new()
+	old_microgame_despawn_timer.timeout.connect(microgame_window.queue_free)
+	old_microgame_despawn_timer.timeout.connect(old_microgame_despawn_timer.queue_free)
+	add_child(old_microgame_despawn_timer)
+	old_microgame_despawn_timer.start(0.5)
+	
 	# spawn the next microgame after some time, and free that timer to prevent memory leaks
 	var new_microgame_spawn_timer = Timer.new()
 	new_microgame_spawn_timer.timeout.connect(add_new_microgame.bind(randi_range(0, len(microgame_filepaths) - 1)))
 	new_microgame_spawn_timer.timeout.connect(new_microgame_spawn_timer.queue_free)
 	add_child(new_microgame_spawn_timer)
 	new_microgame_spawn_timer.start(1.0)
-	
+		
 func set_score(value: int):
 	score = value;
 	score_display.text = str(score)

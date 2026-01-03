@@ -1,4 +1,5 @@
-extends "res://scripts/MicrogameBase.gd"
+#extends "res://scripts/MicrogameBase.gd"
+extends Microgame
 
 @onready var win_block: Control = $CanvasLayer/WinBlock
 @onready var fail_block: Control = $CanvasLayer/FailBlock
