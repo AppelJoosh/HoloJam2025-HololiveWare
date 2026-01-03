@@ -23,7 +23,7 @@ var exit_timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	timer.on_timeout.connect(on_finish.emit.bind(false));
 	
 func lose_on_time_up():
 	on_finish.emit(false)

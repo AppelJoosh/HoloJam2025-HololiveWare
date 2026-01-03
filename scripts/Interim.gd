@@ -8,7 +8,8 @@ var lives : int = 4
 @onready var microgame_container : GridContainer = $CenterContainer/GridContainer
 
 var microgame_filepaths: Array[String] = [
-	"res://scenes/microgames/test_microgame_3.tscn"
+	"res://scenes/microgames/test_microgame_3.tscn",
+	"res://scenes/microgames/test_microgame_2.tscn"
 ]
 
 ##This timer spawns a second microgame to accompany the first one
