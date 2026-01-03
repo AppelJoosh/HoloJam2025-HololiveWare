@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://kbjs48g8avdj"]
 
 [ext_resource type="Texture2D" uid="uid://cdtgi0i8fhci3" path="res://sprites/microgames/catch-the-light/glowstick_spritesheet.png" id="1_74bnw"]
-[ext_resource type="Script" uid="uid://baqalfeqiumum" path="res://scenes/microgames/catch_glowstick.gd" id="1_nuup7"]
+[ext_resource type="Script" uid="uid://baqalfeqiumum" path="res://scripts/microgames/catch-the-light/catch_glowstick.gd" id="1_nuup7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nuup7"]
 size = Vector2(10, 86)
