@@ -11,7 +11,7 @@ const MAX_ACTIVE_MICROGAMES = 2
 
 var microgame_filepaths: Array[String] = [
 	"res://scenes/microgames/test_microgame_3.tscn",
-	"res://scenes/microgames/test_microgame_2.tscn"
+	"res://scenes/microgames/catch_the_light/catch_the_light.tscn"
 ]
 
 var microgame_control_types: Array[int] = [

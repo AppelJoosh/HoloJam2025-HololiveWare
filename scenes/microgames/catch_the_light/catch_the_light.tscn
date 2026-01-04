@@ -44,6 +44,10 @@ metadata/_edit_use_anchors_ = true
 scale = Vector2(0.4, 0.4)
 max_time = 5.0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
+
 [connection signal="release" from="Catch_DropHand" to="Catch_Glowstick" method="_on_catch_drop_hand_release"]
 [connection signal="body_entered" from="Catch_PlayerHand" to="Catch_Glowstick" method="_on_catch_player_hand_body_entered"]
 [connection signal="body_exited" from="Catch_PlayerHand" to="Catch_Glowstick" method="_on_catch_player_hand_body_exited"]
