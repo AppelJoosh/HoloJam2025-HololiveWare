@@ -11,6 +11,7 @@ editor_description = "alt instance of a microgame using Control nodes instead of
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cks6i")
+control_type = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

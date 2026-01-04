@@ -2,6 +2,15 @@ class_name Microgame
 
 extends Node
 
+@export_flags("WASD", "Arrow Keys", "Mouse", "Spacebar") var control_type: int = 0
+#@export_category()
+enum CONTROL_TYPE {
+	WASD = 1 << 0,
+	ARROW_KEYS = 1 << 1,
+	MOUSE = 1 << 2,
+	SPACEBAR = 1 << 3
+}
+
 ##emit this signal when a microgame concludes
 signal on_finish(has_won: bool) 
 
