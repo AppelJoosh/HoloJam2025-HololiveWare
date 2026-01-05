@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dodltvf8dranb"]
+[gd_scene load_steps=3 format=3 uid="uid://dodltvf8dranb"]
+
+[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="1_rdiuh"]
+[ext_resource type="PackedScene" uid="uid://dgkjn0iww3rcv" path="res://scenes/microgames/cheer/components/cheer_arm_left.tscn" id="2_334ju"]
 
 [node name="Cheer" type="Control"]
 layout_mode = 3
@@ -7,3 +10,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 32.128
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+editor_description = "ensures that the timer stays on the bottom left corner of the subviewport (window)"
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("1_rdiuh")]
+position = Vector2(32, -16)
+scale = Vector2(0.4, 0.4)
+max_time = 5.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
+
+[node name="cheer_arm_left" parent="." instance=ExtResource("2_334ju")]
+position = Vector2(410, 541)
+scale = Vector2(2.7472801, 2.7472801)

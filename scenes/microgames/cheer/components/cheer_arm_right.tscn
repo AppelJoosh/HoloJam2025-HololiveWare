@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ydm1ng1xrjs"]
+
+[ext_resource type="Texture2D" uid="uid://dcr4a3thrhkkp" path="res://sprites/microgames/cheer/cheer_arm_right.png" id="1_myfay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myfay"]
+size = Vector2(51, 23)
+
+[node name="cheer_arm_right" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_myfay")
+offset = Vector2(0, -61)
+
+[node name="swing_left" type="Area2D" parent="."]
+position = Vector2(-100.5, -13.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swing_left"]
+shape = SubResource("RectangleShape2D_myfay")
+
+[node name="swing_right" type="Area2D" parent="."]
+position = Vector2(100.5, -13.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swing_right"]
+shape = SubResource("RectangleShape2D_myfay")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb6kg633isyhg"
-path="res://.godot/imported/cheer_arm.png-258d6a3dab2d7d445b57f5efca268d56.ctex"
+uid="uid://barrjkexfa8a6"
+path="res://.godot/imported/cheer_arm_left.png-8dbf4e8d58017a2fd3f58f94d520efd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/microgames/cheer/cheer_arm.png"
-dest_files=["res://.godot/imported/cheer_arm.png-258d6a3dab2d7d445b57f5efca268d56.ctex"]
+source_file="res://sprites/microgames/cheer/cheer_arm_left.png"
+dest_files=["res://.godot/imported/cheer_arm_left.png-8dbf4e8d58017a2fd3f58f94d520efd9.ctex"]
 
 [params]
 
