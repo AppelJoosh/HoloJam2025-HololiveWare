@@ -41,6 +41,7 @@ size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("5_cgc7q")]
+position = Vector2(32, -16)
 scale = Vector2(0.4, 0.4)
 max_time = 5.0
 

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cy60hx7cwx41t" path="res://scripts/MicrogameTimer.gd" id="1_hsnqb"]
 
 [node name="MicrogameTimer" type="Node2D"]
-position = Vector2(32, -16)
 script = ExtResource("1_hsnqb")
 
 [node name="TimerShadow" type="Polygon2D" parent="."]

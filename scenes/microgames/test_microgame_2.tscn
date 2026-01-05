@@ -41,6 +41,7 @@ size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("3_e13cq")]
+position = Vector2(32, -16)
 scale = Vector2(0.4, 0.4)
 
 [connection signal="release" from="Catch_DropHand" to="Catch_Glowstick" method="_on_catch_drop_hand_release"]
