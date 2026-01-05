@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cowmn748v64j6"]
 
 [ext_resource type="Script" uid="uid://qsivxvlesgp" path="res://scripts/microgames/catch-the-light/catch_the_light.gd" id="1_6g1d2"]
-[ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_the_light/catch_drop_hand.tscn" id="2_ppika"]
-[ext_resource type="PackedScene" uid="uid://5r551a41vkn3" path="res://scenes/microgames/catch_the_light/catch_player_hand.tscn" id="3_cgc7q"]
-[ext_resource type="PackedScene" uid="uid://kbjs48g8avdj" path="res://scenes/microgames/catch_the_light/catch_glowstick.tscn" id="4_hk416"]
+[ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_the_light/components/catch_drop_hand.tscn" id="2_ppika"]
+[ext_resource type="PackedScene" uid="uid://5r551a41vkn3" path="res://scenes/microgames/catch_the_light/components/catch_player_hand.tscn" id="3_cgc7q"]
+[ext_resource type="PackedScene" uid="uid://kbjs48g8avdj" path="res://scenes/microgames/catch_the_light/components/catch_glowstick.tscn" id="4_hk416"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_cgc7q"]
 
 [node name="Catch_The_Light" type="Control"]
