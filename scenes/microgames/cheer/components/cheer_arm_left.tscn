@@ -8,7 +8,6 @@ size = Vector2(51, 23)
 [node name="cheer_arm_left" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.3962634
 texture = ExtResource("1_q2dq8")
 offset = Vector2(0, -61)
 
