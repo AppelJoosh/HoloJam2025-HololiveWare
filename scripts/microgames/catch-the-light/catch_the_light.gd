@@ -14,3 +14,4 @@ func _process(_delta: float) -> void:
 
 func _on_catch_glowstick_win_flag() -> void:
 	win_state = true
+	# figure out fanfare
