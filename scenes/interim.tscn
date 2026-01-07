@@ -50,3 +50,4 @@ horizontal_alignment = 1
 wait_time = 24.0
 
 [connection signal="timeout" from="SubMicrogameSpawnTimer" to="." method="add_random_new_microgame_on_timeout"]
+[connection signal="timeout" from="SubMicrogameSpawnTimer" to="." method="restart_second_microgame_spawn_timer"]

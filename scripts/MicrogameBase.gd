@@ -24,6 +24,7 @@ var speed_factor: float = 1.0
 var blurb: String = "Objective!";
 ##use to prevent interactions that can cause glitches (i.e. failing after reaching win state)
 var is_active: bool = true 
+var win_on_timeout = false
 
 ##When the microgame ends, give some time in between the end and despawning it to smoothen the game's pace
 var exit_timer = Timer.new()
@@ -36,18 +37,18 @@ func _ready() -> void:
 	on_finish.connect(deactivate_on_end)
 	
 func lose_on_time_up():
-	on_finish.emit(false)
+	on_finish.emit(win_on_timeout)
 
 func deactivate_on_end(_win_state: bool):
 	timer.is_active = false
 	is_active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 	
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	pass

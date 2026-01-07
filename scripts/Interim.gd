@@ -11,12 +11,16 @@ const MAX_ACTIVE_MICROGAMES = 2
 
 var microgame_filepaths: Array[String] = [
 	"res://scenes/microgames/test_microgame_3.tscn",
-	"res://scenes/microgames/catch_the_light/catch_the_light.tscn"
+	"res://scenes/microgames/catch_the_light/catch_the_light.tscn",
+	"res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.tscn",
+	"res://scenes/microgames/true_or_false/true_or_false.tscn"
 ]
 
-var microgame_control_types: Array[int] = [
+var microgame_control_types: Array[Microgame.CONTROL_TYPE] = [
 	Microgame.CONTROL_TYPE.MOUSE,
-	Microgame.CONTROL_TYPE.SPACEBAR
+	Microgame.CONTROL_TYPE.SPACEBAR,
+	Microgame.CONTROL_TYPE.ARROW_KEYS,
+	Microgame.CONTROL_TYPE.MOUSE
 ]
 ## A bitfield variable to keep track of which control types are in use
 var active_microgame_control_types = 0
@@ -28,7 +32,8 @@ var active_microgame_control_types = 0
 var microgame: Array[Microgame] = [];
 
 func _ready() -> void:
-	add_new_microgame(0)
+	#add_new_microgame(0)
+	add_random_new_microgame_on_timeout()
 	timer.start(randf_range(4, 16))
 	pass
 
@@ -80,10 +85,13 @@ func add_new_microgame(microgameId: int) -> Microgame:
 	
 func add_random_new_microgame_on_timeout():
 	if (len(microgame_container.get_children()) >= MAX_ACTIVE_MICROGAMES):
+		print("too many microgamesss")
 		return
 	
 	var idx = get_next_microgame_index()
 	add_new_microgame(idx)
+	
+func restart_second_microgame_spawn_timer():
 	timer.start(randf_range(4, 15))
 	
 func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
@@ -100,14 +108,15 @@ func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
 	old_microgame_despawn_timer.start(0.5)
 	
 	# spawn the next microgame after some time, and free that timer to prevent memory leaks
-	var new_microgame_index = get_next_microgame_index()
-	var new_microgame_spawn_timer = Timer.new()
-	new_microgame_spawn_timer.timeout.connect(add_new_microgame.bind(new_microgame_index))
-	new_microgame_spawn_timer.timeout.connect(new_microgame_spawn_timer.queue_free)
-	add_child(new_microgame_spawn_timer)
-	new_microgame_spawn_timer.start(1.0)
-	
-	
+	if (len(microgame_container.get_children()) < MAX_ACTIVE_MICROGAMES):
+		#var new_microgame_index = get_next_microgame_index()
+		var new_microgame_spawn_timer = Timer.new()
+		#new_microgame_spawn_timer.timeout.connect(add_new_microgame.bind(new_microgame_index))
+		new_microgame_spawn_timer.timeout.connect(add_random_new_microgame_on_timeout)
+		new_microgame_spawn_timer.timeout.connect(new_microgame_spawn_timer.queue_free)
+		add_child(new_microgame_spawn_timer)
+		new_microgame_spawn_timer.start(1.0)
+
 func free_microgame_control_type_on_finish(_win_state: bool, control_type: int):
 	active_microgame_control_types ^= control_type
 	print(active_microgame_control_types)
