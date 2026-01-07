@@ -14,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6g1d2")
+control_type = 8
 
 [node name="Catch_DropHand" parent="." instance=ExtResource("2_ppika")]
 position = Vector2(590, 174)

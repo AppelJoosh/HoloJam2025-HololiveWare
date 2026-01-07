@@ -3,6 +3,7 @@ extends Microgame
 var left_done: bool = false
 var right_done: bool = false
 var complete: bool = false		# prevent repeated fanfare?
+var confetti: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,10 @@ func _process(delta: float) -> void:
 		win_state = true
 		print("game complete")
 		# figure out fanfare
+		confetti += $Confetti.get_children()
+		confetti += $Confetti2.get_children()
+		for child in confetti:
+			child.set_emitting(true)
 		complete = true
 
 

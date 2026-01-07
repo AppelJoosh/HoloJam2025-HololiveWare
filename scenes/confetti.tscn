@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc0218yp647el"]
+
+[sub_resource type="Curve" id="Curve_du648"]
+_data = [Vector2(0.017441869, 0.23595512), 0.0, 0.0, 0, 0, Vector2(1, 0.11235964), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Confetti" type="Node2D"]
+
+[node name="green" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 4.89
+one_shot = true
+explosiveness = 0.6
+randomness = 0.2
+direction = Vector2(0, -5)
+spread = 20.88
+gravity = Vector2(0, 100)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = 282.06
+angular_velocity_max = 282.06
+linear_accel_min = 12.37
+linear_accel_max = 12.37
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_du648")
+color = Color(0.2430684, 0.7405982, 0.3681584, 1)
+
+[node name="red" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 4.89
+one_shot = true
+explosiveness = 0.6
+randomness = 0.2
+direction = Vector2(0, -5)
+spread = 20.88
+gravity = Vector2(0, 100)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = 282.06
+angular_velocity_max = 282.06
+linear_accel_min = 12.37
+linear_accel_max = 12.37
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_du648")
+color = Color(0.99999994, 0.17405435, 0.2682344, 1)
+
+[node name="blue" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 4.89
+one_shot = true
+explosiveness = 0.6
+randomness = 0.2
+direction = Vector2(0, -5)
+spread = 20.88
+gravity = Vector2(0, 100)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = 282.06
+angular_velocity_max = 282.06
+linear_accel_min = 12.37
+linear_accel_max = 12.37
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_du648")
+color = Color(1.92523e-07, 0.6975867, 0.855464, 1)

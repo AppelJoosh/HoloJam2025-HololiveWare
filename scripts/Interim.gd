@@ -13,7 +13,8 @@ var microgame_filepaths: Array[String] = [
 	"res://scenes/microgames/test_microgame_3.tscn",
 	"res://scenes/microgames/catch_the_light/catch_the_light.tscn",
 	"res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.tscn",
-	"res://scenes/microgames/true_or_false/true_or_false.tscn"
+	"res://scenes/microgames/true_or_false/true_or_false.tscn",
+	"res://scenes/microgames/cheer/cheer.tscn"
 ]
 
 var microgame_control_types: Array[Microgame.CONTROL_TYPE] = [
