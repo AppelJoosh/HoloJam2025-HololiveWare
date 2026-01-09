@@ -1,19 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmc8r2amifdcp"]
+[gd_scene load_steps=13 format=3 uid="uid://b4bhrll2soan8"]
 
-[ext_resource type="Script" uid="uid://dae1opblhbswb" path="res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.gd" id="1_rsdjj"]
-[ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_rsdjj"]
-[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_4o5ap"]
-[ext_resource type="Script" uid="uid://bjwgjpdqtntyt" path="res://scenes/microgames/distribute_tickets/target.gd" id="3_6k3vb"]
-[ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="4_rsdjj"]
-[ext_resource type="Script" uid="uid://ddp3j57e07dud" path="res://scenes/microgames/distribute_tickets/ticket.gd" id="5_ncfrs"]
+[ext_resource type="Script" uid="uid://b5r4t3p5qyc43" path="res://scenes/microgames/avoid/avoid.gd" id="1_s28cg"]
+[ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_qgqlf"]
+[ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="2_s28cg"]
+[ext_resource type="Script" uid="uid://dwpv87ohrg7lv" path="res://scenes/microgames/avoid/hazard.gd" id="3_rat54"]
+[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_iqam8"]
+[ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_xatth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k3vb"]
 size = Vector2(128, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncfrs"]
-size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsdjj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s28cg"]
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14wus"]
@@ -49,13 +46,13 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ncfrs"]
 _data = {
 &"RESET": SubResource("Animation_rsdjj"),
-&"objective_blurb": ExtResource("4_rsdjj")
+&"objective_blurb": ExtResource("6_xatth")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15ynx"]
 size = Vector2(512, 384)
 
-[node name="DistributeTickets" type="Control"]
+[node name="AvoidTechIssues" type="Control"]
 editor_description = "shooter microgame"
 custom_minimum_size = Vector2(512, 384)
 layout_mode = 3
@@ -66,51 +63,42 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_rsdjj")
+script = ExtResource("1_s28cg")
 control_type = 2
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(575, 447)
-scale = Vector2(0.5, 0.5)
-motion_mode = 1
-
-[node name="Sprite" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_rsdjj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_6k3vb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(575, 324)
 
-[node name="Target" type="CharacterBody2D" parent="."]
-visible = false
-position = Vector2(456, 185)
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(600, 345)
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+material = ExtResource("2_s28cg")
+texture = ExtResource("2_qgqlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_6k3vb")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("RectangleShape2D_s28cg")
+
+[node name="Hazard" type="CharacterBody2D" parent="."]
+position = Vector2(64.00003, 880.99994)
 scale = Vector2(0.4, 0.4)
-script = ExtResource("3_6k3vb")
+script = ExtResource("3_rat54")
 
-[node name="Sprite" type="Sprite2D" parent="Target"]
+[node name="Sprite" type="Sprite2D" parent="Hazard"]
 modulate = Color(1, 0.5019608, 0, 1)
-texture = ExtResource("2_rsdjj")
+texture = ExtResource("2_qgqlf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
-shape = SubResource("RectangleShape2D_ncfrs")
-
-[node name="Ticket" type="Sprite2D" parent="."]
-visible = false
-self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
-position = Vector2(533, 407)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_rsdjj")
-script = ExtResource("5_ncfrs")
-
-[node name="Area2D" type="Area2D" parent="Ticket"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ticket/Area2D"]
-shape = SubResource("RectangleShape2D_rsdjj")
-
-[node name="Timer" type="Timer" parent="Ticket"]
-wait_time = 5.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
+shape = SubResource("RectangleShape2D_s28cg")
 
 [node name="Wall_1" type="StaticBody2D" parent="."]
 position = Vector2(-146, 320)
@@ -125,15 +113,13 @@ position = Vector2(1328, 320)
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_3" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(640, -512)
+position = Vector2(639, -348)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_3"]
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_4" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(639, 1097)
+position = Vector2(639, 1015)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_4"]
 shape = SubResource("RectangleShape2D_14wus")
@@ -152,12 +138,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
-[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("3_4o5ap")]
+[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("5_iqam8")]
 position = Vector2(32, -16)
 scale = Vector2(0.4, 0.4)
 
 [node name="Blurb" type="Label" parent="CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -172,7 +158,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 48
-text = "Distribute Tickets!"
+text = "Avoid Tech Issues!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -187,6 +173,8 @@ position = Vector2(589, 333)
 shape = SubResource("RectangleShape2D_15ynx")
 disabled = true
 
-[connection signal="body_entered" from="Ticket/Area2D" to="Ticket" method="on_target_hit"]
-[connection signal="timeout" from="Ticket/Timer" to="Ticket" method="queue_free"]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(800, 490)
+
+[connection signal="body_entered" from="Player/Area2D" to="." method="fail_on_hazard_hit"]
 [connection signal="on_timeout" from="CanvasLayer/Control/MicrogameTimer" to="." method="lose_on_time_up"]

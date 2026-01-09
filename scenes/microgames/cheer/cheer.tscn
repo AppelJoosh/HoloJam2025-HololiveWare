@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="1_rdiuh"]
 [ext_resource type="PackedScene" uid="uid://dgkjn0iww3rcv" path="res://scenes/microgames/cheer/components/cheer_arm_left.tscn" id="2_334ju"]
 [ext_resource type="PackedScene" uid="uid://c2ydm1ng1xrjs" path="res://scenes/microgames/cheer/components/cheer_arm_right.tscn" id="3_4a3w1"]
-[ext_resource type="PackedScene" uid="uid://cc0218yp647el" path="res://scenes/confetti.tscn" id="5_xmo8u"]
+[ext_resource type="PackedScene" path="res://scenes/confetti.tscn" id="5_xmo8u"]
 
 [node name="Cheer" type="Control"]
 layout_mode = 3

@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://brsitoon556ps"]
+[gd_scene load_steps=5 format=3 uid="uid://brsitoon556ps"]
 
 [ext_resource type="Script" uid="uid://sddxntplkbmr" path="res://scripts/Interim.gd" id="1_4awoh"]
+[ext_resource type="Texture2D" uid="uid://t624rioeyf57" path="res://sprites/hololiveware_background.png" id="1_4du1e"]
+[ext_resource type="Shader" uid="uid://bkkpseigsghmr" path="res://shaders/wiggle.gdshader" id="1_bnosh"]
 
-[sub_resource type="Gradient" id="Gradient_4awoh"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4du1e"]
-gradient = SubResource("Gradient_4awoh")
-fill_from = Vector2(0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3my8h"]
+shader = ExtResource("1_bnosh")
+shader_parameter/strength = 0.003
+shader_parameter/wait = 0.017
 
 [node name="interim" type="TextureRect"]
+material = SubResource("ShaderMaterial_3my8h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = SubResource("GradientTexture2D_4du1e")
+texture = ExtResource("1_4du1e")
 script = ExtResource("1_4awoh")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -42,12 +44,13 @@ offset_left = -25.5
 offset_right = 25.5
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 36
-text = "<SCORE>"
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "0"
 horizontal_alignment = 1
 
 [node name="SubMicrogameSpawnTimer" type="Timer" parent="."]
 wait_time = 24.0
 
-[connection signal="timeout" from="SubMicrogameSpawnTimer" to="." method="add_random_new_microgame_on_timeout"]
 [connection signal="timeout" from="SubMicrogameSpawnTimer" to="." method="restart_second_microgame_spawn_timer"]
+[connection signal="timeout" from="SubMicrogameSpawnTimer" to="." method="add_random_new_microgame_on_timeout"]

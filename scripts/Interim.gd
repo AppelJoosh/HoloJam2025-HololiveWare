@@ -14,14 +14,21 @@ var microgame_filepaths: Array[String] = [
 	"res://scenes/microgames/catch_the_light/catch_the_light.tscn",
 	"res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.tscn",
 	"res://scenes/microgames/true_or_false/true_or_false.tscn",
-	"res://scenes/microgames/cheer/cheer.tscn"
+	"res://scenes/microgames/cheer/cheer.tscn",
+	"res://scenes/microgames/collect/collect.tscn",
+	"res://scenes/microgames/avoid/avoid.tscn",
+	"res://scenes/microgames/dance_practice/dance_practice.tscn",
 ]
 
 var microgame_control_types: Array[Microgame.CONTROL_TYPE] = [
 	Microgame.CONTROL_TYPE.MOUSE,
 	Microgame.CONTROL_TYPE.SPACEBAR,
 	Microgame.CONTROL_TYPE.ARROW_KEYS,
-	Microgame.CONTROL_TYPE.MOUSE
+	Microgame.CONTROL_TYPE.MOUSE,
+	Microgame.CONTROL_TYPE.ARROW_KEYS + Microgame.CONTROL_TYPE.WASD,
+	Microgame.CONTROL_TYPE.ARROW_KEYS,
+	Microgame.CONTROL_TYPE.WASD,
+	Microgame.CONTROL_TYPE.ARROW_KEYS
 ]
 ## A bitfield variable to keep track of which control types are in use
 var active_microgame_control_types = 0
