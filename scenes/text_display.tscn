@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://060o761w4jry"]
+
+[ext_resource type="Script" uid="uid://duhd2srx02548" path="res://scripts/text_display.gd" id="1_2s3kw"]
+
+[node name="Text_Display" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2s3kw")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 262.0
+offset_bottom = 40.0
+text = "test"
+horizontal_alignment = 1

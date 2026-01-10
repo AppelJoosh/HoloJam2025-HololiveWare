@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dodltvf8dranb"]
+[gd_scene load_steps=7 format=3 uid="uid://dodltvf8dranb"]
 
 [ext_resource type="Script" uid="uid://cp750de340wq0" path="res://scripts/microgames/cheer/cheer.gd" id="1_np5h8"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="1_rdiuh"]
 [ext_resource type="PackedScene" uid="uid://dgkjn0iww3rcv" path="res://scenes/microgames/cheer/components/cheer_arm_left.tscn" id="2_334ju"]
 [ext_resource type="PackedScene" uid="uid://c2ydm1ng1xrjs" path="res://scenes/microgames/cheer/components/cheer_arm_right.tscn" id="3_4a3w1"]
-[ext_resource type="PackedScene" path="res://scenes/confetti.tscn" id="5_xmo8u"]
+[ext_resource type="PackedScene" uid="uid://cc0218yp647el" path="res://scenes/confetti.tscn" id="5_xmo8u"]
+[ext_resource type="PackedScene" uid="uid://060o761w4jry" path="res://scenes/text_display.tscn" id="6_nevdi"]
 
 [node name="Cheer" type="Control"]
 layout_mode = 3
@@ -56,6 +57,12 @@ scale = Vector2(2, 2)
 position = Vector2(1100.0001, 632)
 rotation = -0.7853982
 scale = Vector2(2, 2)
+
+[node name="Text_Display" parent="." instance=ExtResource("6_nevdi")]
+layout_mode = 0
+offset_top = 247.99998
+offset_bottom = 247.99998
+scale = Vector2(4.5562973, 4.5562973)
 
 [connection signal="finished" from="cheer_arm_left" to="." method="_on_cheer_arm_left_finished"]
 [connection signal="finished" from="cheer_arm_right" to="." method="_on_cheer_arm_right_finished"]
