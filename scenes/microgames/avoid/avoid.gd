@@ -9,7 +9,7 @@ var player_movement = Vector2()
 func _ready() -> void:
 	super()
 	win_on_timeout = true
-	var hazard_count = 2 + floor(speed_factor * 0.5)
+	var hazard_count = 2 + floor(speed_factor * 0.12)
 	for i in range(hazard_count):
 		var new_hazard : MG05_Hazard = hazard_base.duplicate()
 		new_hazard.speed *= speed_factor

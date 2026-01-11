@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmc8r2amifdcp"]
+[gd_scene load_steps=15 format=3 uid="uid://dmc8r2amifdcp"]
 
 [ext_resource type="Script" uid="uid://dae1opblhbswb" path="res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.gd" id="1_rsdjj"]
+[ext_resource type="Texture2D" uid="uid://v3e7xc8mnpel" path="res://textures/HLW_Street.png" id="2_14wus"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_rsdjj"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_4o5ap"]
 [ext_resource type="Script" uid="uid://bjwgjpdqtntyt" path="res://scenes/microgames/distribute_tickets/target.gd" id="3_6k3vb"]
@@ -9,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k3vb"]
 size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ynx"]
+size = Vector2(512, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncfrs"]
 size = Vector2(128, 128)
@@ -52,9 +56,6 @@ _data = {
 &"objective_blurb": ExtResource("4_rsdjj")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ynx"]
-size = Vector2(512, 384)
-
 [node name="DistributeTickets" type="Control"]
 editor_description = "shooter microgame"
 custom_minimum_size = Vector2(512, 384)
@@ -69,6 +70,10 @@ size_flags_vertical = 3
 script = ExtResource("1_rsdjj")
 control_type = 2
 
+[node name="HlwStreet" type="Sprite2D" parent="."]
+position = Vector2(575, 324)
+texture = ExtResource("2_14wus")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(575, 447)
 scale = Vector2(0.5, 0.5)
@@ -82,6 +87,10 @@ shape = SubResource("RectangleShape2D_6k3vb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(575, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D"]
+shape = SubResource("RectangleShape2D_15ynx")
+disabled = true
 
 [node name="Target" type="CharacterBody2D" parent="."]
 visible = false
@@ -113,7 +122,7 @@ shape = SubResource("RectangleShape2D_rsdjj")
 wait_time = 5.0
 
 [node name="Wall_1" type="StaticBody2D" parent="."]
-position = Vector2(-146, 320)
+position = Vector2(-177, 324)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_1"]
 shape = SubResource("RectangleShape2D_14wus")
@@ -157,7 +166,7 @@ position = Vector2(32, -16)
 scale = Vector2(0.4, 0.4)
 
 [node name="Blurb" type="Label" parent="CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -181,11 +190,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(589, 333)
-shape = SubResource("RectangleShape2D_15ynx")
-disabled = true
 
 [connection signal="body_entered" from="Ticket/Area2D" to="Ticket" method="on_target_hit"]
 [connection signal="timeout" from="Ticket/Timer" to="Ticket" method="queue_free"]

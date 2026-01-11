@@ -28,5 +28,6 @@ func _physics_process(delta: float) -> void:
 		timer_value.text = ("%3.2f" % time)
 	else:
 		time = 0
+		timer_value.text = "0.00"
 		timer_value.hide()
 		emit_signal("on_timeout")

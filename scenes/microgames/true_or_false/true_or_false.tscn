@@ -53,7 +53,7 @@ script = ExtResource("1_cexi6")
 control_type = 4
 
 [node name="Background" type="Polygon2D" parent="."]
-scale = Vector2(512, 512)
+scale = Vector2(256, 192)
 polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)
 vertex_colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1)
 

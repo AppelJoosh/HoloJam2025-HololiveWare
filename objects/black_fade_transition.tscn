@@ -1,11 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1xb1lbqwjdjv"]
-
-[ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="1_sa3yf"]
-[ext_resource type="Texture2D" uid="uid://7f4y1pwlsyf1" path="res://textures/HLW_TitleScreen.png" id="2_s4lrb"]
-[ext_resource type="Script" uid="uid://xxm42bp8y6qw" path="res://scripts/title_screen.gd" id="3_s4lrb"]
-
-[sub_resource type="Theme" id="Theme_sa3yf"]
-default_font_size = 48
+[gd_scene load_steps=4 format=3 uid="uid://br5j0y75eajhb"]
 
 [sub_resource type="Animation" id="Animation_sa3yf"]
 resource_name = "Fade"
@@ -82,60 +75,16 @@ _data = {
 &"RESET": SubResource("Animation_s4lrb")
 }
 
-[node name="TitleScreen" type="TextureRect"]
-material = ExtResource("1_sa3yf")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_s4lrb")
-script = ExtResource("3_s4lrb")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -141.5
-offset_right = 52.0
-offset_bottom = 141.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_sa3yf")
-
-[node name="Title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/outline_size = 32
-theme_override_font_sizes/font_size = 72
-text = "HololiveWare"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Spacer" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Start"
-
-[node name="BlackFadeTransition" type="ColorRect" parent="."]
+[node name="BlackFadeTransition" type="ColorRect"]
 visible = false
-layout_mode = 0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackFadeTransition"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mgrm8")
 }
-
-[connection signal="pressed" from="VBoxContainer/StartButton" to="BlackFadeTransition/AnimationPlayer" method="play" binds= ["GameTransition"]]

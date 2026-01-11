@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t624rioeyf57"
-path="res://.godot/imported/hololiveware_background.png-226649834709e954275b00e2ccf724ee.ctex"
+uid="uid://bcfjn3j56i4fq"
+path="res://.godot/imported/HLW_DancePractice.png-7c4b0dd083254ba0ccfd90b945a29612.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hololiveware_background.png"
-dest_files=["res://.godot/imported/hololiveware_background.png-226649834709e954275b00e2ccf724ee.ctex"]
+source_file="res://textures/HLW_DancePractice.png"
+dest_files=["res://.godot/imported/HLW_DancePractice.png-7c4b0dd083254ba0ccfd90b945a29612.ctex"]
 
 [params]
 

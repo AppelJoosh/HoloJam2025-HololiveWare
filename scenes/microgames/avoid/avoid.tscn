@@ -1,11 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4bhrll2soan8"]
+[gd_scene load_steps=14 format=3 uid="uid://b4bhrll2soan8"]
 
 [ext_resource type="Script" uid="uid://b5r4t3p5qyc43" path="res://scenes/microgames/avoid/avoid.gd" id="1_s28cg"]
+[ext_resource type="Texture2D" uid="uid://cqll4javfrq5" path="res://textures/HLW_WhiteGrid.png" id="2_1rs76"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_qgqlf"]
 [ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="2_s28cg"]
 [ext_resource type="Script" uid="uid://dwpv87ohrg7lv" path="res://scenes/microgames/avoid/hazard.gd" id="3_rat54"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_iqam8"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_xatth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ynx"]
+size = Vector2(512, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k3vb"]
 size = Vector2(128, 128)
@@ -49,9 +53,6 @@ _data = {
 &"objective_blurb": ExtResource("6_xatth")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ynx"]
-size = Vector2(512, 384)
-
 [node name="AvoidTechIssues" type="Control"]
 editor_description = "shooter microgame"
 custom_minimum_size = Vector2(512, 384)
@@ -66,8 +67,17 @@ size_flags_vertical = 3
 script = ExtResource("1_s28cg")
 control_type = 2
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(602, 324)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_1rs76")
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 324)
+position = Vector2(600, 345)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D"]
+shape = SubResource("RectangleShape2D_15ynx")
+disabled = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(600, 345)
@@ -107,19 +117,19 @@ position = Vector2(-146, 320)
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_2" type="StaticBody2D" parent="."]
-position = Vector2(1328, 320)
+position = Vector2(1349, 320)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_2"]
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_3" type="StaticBody2D" parent="."]
-position = Vector2(639, -348)
+position = Vector2(664, -333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_3"]
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_4" type="StaticBody2D" parent="."]
-position = Vector2(639, 1015)
+position = Vector2(664, 979)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_4"]
 shape = SubResource("RectangleShape2D_14wus")
@@ -167,11 +177,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(589, 333)
-shape = SubResource("RectangleShape2D_15ynx")
-disabled = true
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(800, 490)

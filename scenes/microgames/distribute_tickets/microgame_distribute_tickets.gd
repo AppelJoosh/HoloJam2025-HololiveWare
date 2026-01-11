@@ -13,7 +13,7 @@ var player_movement = Vector2()
 @onready var target_base = $Target
 
 func _init():
-	targets_required = 2 + floor(speed_factor / 10)
+	targets_required = 2 + floor(speed_factor * 0.35)
 
 func _ready() -> void:
 	super()
@@ -32,10 +32,9 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		match event.keycode:
-			Key.KEY_LEFT:
-				player_movement.x = -6 if event.pressed else 0
-			Key.KEY_RIGHT:
-				player_movement.x =  6 if event.pressed else 0
+			Key.KEY_LEFT, Key.KEY_RIGHT:
+				player_movement = Input.get_vector("LeftArrow", "RightArrow", "UpArrow", "DownArrow") * Vector2(1,0) * 6
+				# restrict player to horizontal movement only
 			Key.KEY_UP:
 				if event.pressed and not event.echo:
 					shoot_ticket()

@@ -36,12 +36,14 @@ var active_microgame_control_types = 0
 ##This timer spawns a second microgame to accompany the first one
 @onready var timer : Timer = $SubMicrogameSpawnTimer
 
+@onready var lives_container : HBoxContainer = $LivesContainer
+
 ##The current active microgames
 var microgame: Array[Microgame] = [];
 
 func _ready() -> void:
 	#add_new_microgame(0)
-	add_random_new_microgame_on_timeout()
+	#add_random_new_microgame_on_timeout()
 	timer.start(randf_range(4, 16))
 	pass
 
@@ -68,9 +70,16 @@ func add_new_microgame(microgameId: int) -> Microgame:
 	if (microgameId == -1):
 		return
 		
+	if lives <= 0:
+		print("ur ded")
+		var transition_player : AnimationPlayer = get_node("BlackFadeTransition/AnimationPlayer")
+		transition_player.play("GameOverTransition")
+		return
+		
 	var microgame_resource: Resource = load(microgame_filepaths[microgameId])
 	var new_microgame: Microgame = microgame_resource.instantiate()
 	var new_microgame_control_type = microgame_control_types[microgameId]
+	new_microgame.speed_factor = 1.0 + score * 0.2 # gradually ramp up difficulty as score gets higher
 	
 	var subviewport = SubViewport.new()
 	
@@ -107,6 +116,8 @@ func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
 		set_score(score + 1)
 	else:
 		lives -= 1
+		#lives_container.remove_child(lives_container.get_child(0))
+		lives_container.get_child(0).queue_free()
 
 	# despawn the old completed microgame
 	var old_microgame_despawn_timer = Timer.new()
@@ -132,3 +143,6 @@ func free_microgame_control_type_on_finish(_win_state: bool, control_type: int):
 func set_score(value: int):
 	score = value;
 	score_display.text = str(score)
+
+func transition_to_end():
+	get_tree().change_scene_to_file("res://scenes/end_scene.tscn")

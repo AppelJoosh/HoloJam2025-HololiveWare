@@ -10,14 +10,14 @@ func _ready() -> void:
 	#movement = Vector2.from_angle(randf_range(0, 2 * PI))
 	speed = randf_range(0.6, 2.0)
 	#position = Vector2(randf_range(375, 800), randf_range(175, 490))
-	var distance = randi_range(105, 180)
+	var distance = randi_range(120, 180)
 	var angle = randf_range(0, 2 * PI)
 	
 	var displacement = Vector2.from_angle(angle) * distance
 	position = Vector2(600, 345) + displacement
 	
 	# initially move away from the player
-	movement = (displacement + Vector2.from_angle(randf_range(-PI, PI))).normalized()
+	movement = (displacement + Vector2.from_angle(randf_range(-PI/4, PI/4))).normalized()
 	
 func _physics_process(_delta: float) -> void:
 	var collision = move_and_collide(movement * speed)

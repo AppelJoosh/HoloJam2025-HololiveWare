@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://pxifs6u4vi6i"]
+[gd_scene load_steps=13 format=3 uid="uid://pxifs6u4vi6i"]
 
 [ext_resource type="Script" uid="uid://bga05o4why6si" path="res://scenes/microgames/collect/microgame_collect.gd" id="1_n3y4s"]
+[ext_resource type="Texture2D" uid="uid://ci4mhg4qm4en7" path="res://textures/HLW_OfficeTopDown.png" id="2_fj0n3"]
 [ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="2_oqkxb"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="3_j6ntp"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_poto2"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_oup4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj0n3"]
+size = Vector2(512, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k3vb"]
 size = Vector2(128, 128)
@@ -62,8 +66,16 @@ size_flags_vertical = 3
 script = ExtResource("1_n3y4s")
 control_type = 2
 
+[node name="HlwOfficeTopDown" type="Sprite2D" parent="."]
+position = Vector2(575, 324)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_fj0n3")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(575, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D"]
+shape = SubResource("RectangleShape2D_fj0n3")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(600, 345)
@@ -96,25 +108,25 @@ texture = ExtResource("3_j6ntp")
 shape = SubResource("RectangleShape2D_s28cg")
 
 [node name="Wall_1" type="StaticBody2D" parent="."]
-position = Vector2(-146, 320)
+position = Vector2(-187, 331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_1"]
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_2" type="StaticBody2D" parent="."]
-position = Vector2(1328, 320)
+position = Vector2(1337, 324)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_2"]
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_3" type="StaticBody2D" parent="."]
-position = Vector2(639, -348)
+position = Vector2(639, -340)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_3"]
 shape = SubResource("RectangleShape2D_14wus")
 
 [node name="Wall_4" type="StaticBody2D" parent="."]
-position = Vector2(639, 1015)
+position = Vector2(632, 990)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_4"]
 shape = SubResource("RectangleShape2D_14wus")
