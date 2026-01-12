@@ -10,7 +10,7 @@ const MAX_ACTIVE_MICROGAMES = 2
 @onready var microgame_container : GridContainer = $CenterContainer/GridContainer
 
 var microgame_filepaths: Array[String] = [
-	"res://scenes/microgames/test_microgame_3.tscn",
+	#"res://scenes/microgames/test_microgame_3.tscn",
 	"res://scenes/microgames/catch_the_light/catch_the_light.tscn",
 	"res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.tscn",
 	"res://scenes/microgames/true_or_false/true_or_false.tscn",
@@ -21,7 +21,7 @@ var microgame_filepaths: Array[String] = [
 ]
 
 var microgame_control_types: Array[Microgame.CONTROL_TYPE] = [
-	Microgame.CONTROL_TYPE.MOUSE,
+	#Microgame.CONTROL_TYPE.MOUSE,
 	Microgame.CONTROL_TYPE.SPACEBAR,
 	Microgame.CONTROL_TYPE.ARROW_KEYS,
 	Microgame.CONTROL_TYPE.MOUSE,
@@ -70,11 +70,11 @@ func add_new_microgame(microgameId: int) -> Microgame:
 	if (microgameId == -1):
 		return
 		
-	if lives <= 0:
-		print("ur ded")
-		var transition_player : AnimationPlayer = get_node("BlackFadeTransition/AnimationPlayer")
-		transition_player.play("GameOverTransition")
-		return
+	#if lives <= 0:
+		#print("ur ded")
+		#var transition_player : AnimationPlayer = get_node("BlackFadeTransition/AnimationPlayer")
+		#transition_player.play("GameOverTransition")
+		#return
 		
 	var microgame_resource: Resource = load(microgame_filepaths[microgameId])
 	var new_microgame: Microgame = microgame_resource.instantiate()
@@ -117,7 +117,16 @@ func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
 	else:
 		lives -= 1
 		#lives_container.remove_child(lives_container.get_child(0))
-		lives_container.get_child(0).queue_free()
+		var life_to_lose = lives_container.get_child(0)
+		if (is_instance_valid(life_to_lose)): 
+			life_to_lose.queue_free()
+		
+		if lives <= 0:
+			print("ur ded")
+			var transition_player : AnimationPlayer = get_node("BlackFadeTransition/AnimationPlayer")
+			transition_player.play("GameOverTransition")
+			GlobalVars.final_score = score
+			return
 
 	# despawn the old completed microgame
 	var old_microgame_despawn_timer = Timer.new()
