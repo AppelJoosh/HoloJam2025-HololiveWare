@@ -15,7 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if left_done and right_done and !complete:
 		win_state = true
-		win_on_timeout = true
 		print("game complete")
 		# figure out fanfare
 		confetti += $Confetti.get_children()
@@ -23,6 +22,7 @@ func _process(delta: float) -> void:
 		for child in confetti:
 			child.set_emitting(true)
 		complete = true
+		on_finish.emit(win_state)
 
 
 func _on_cheer_arm_right_finished() -> void:
