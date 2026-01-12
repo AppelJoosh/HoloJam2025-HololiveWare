@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://dodltvf8dranb"]
+
+[ext_resource type="Script" uid="uid://cp750de340wq0" path="res://scripts/microgames/cheer/cheer.gd" id="1_np5h8"]
+[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="1_rdiuh"]
+[ext_resource type="PackedScene" uid="uid://dgkjn0iww3rcv" path="res://scenes/microgames/cheer/components/cheer_arm_left.tscn" id="2_334ju"]
+[ext_resource type="PackedScene" uid="uid://c2ydm1ng1xrjs" path="res://scenes/microgames/cheer/components/cheer_arm_right.tscn" id="3_4a3w1"]
+[ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="3_nevdi"]
+[ext_resource type="Texture2D" uid="uid://dw18r4y1jxdd7" path="res://sprites/control_indicators/ci_wasd.png" id="4_a0tqp"]
+[ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="5_3u8y1"]
+[ext_resource type="PackedScene" uid="uid://b8c0wqh4tocbp" path="res://scenes/confetti.tscn" id="5_xmo8u"]
+[ext_resource type="Texture2D" uid="uid://drfh1wbqqysev" path="res://textures/HLW_Stage.png" id="9_3u8y1"]
+
+[sub_resource type="Animation" id="Animation_rsdjj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncfrs"]
+_data = {
+&"RESET": SubResource("Animation_rsdjj"),
+&"objective_blurb": ExtResource("3_nevdi")
+}
+
+[node name="Cheer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_np5h8")
+control_type = 3
+
+[node name="HlwStage" type="Sprite2D" parent="."]
+position = Vector2(593, 185)
+scale = Vector2(2.0916667, 2.0916667)
+texture = ExtResource("9_3u8y1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 32.128
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+editor_description = "ensures that the timer stays on the bottom left corner of the subviewport (window)"
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("1_rdiuh")]
+position = Vector2(32, -16)
+scale = Vector2(0.4, 0.4)
+max_time = 5.0
+
+[node name="Blurb" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -57.5
+offset_right = 202.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "Cheer!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Blurb"]
+libraries = {
+&"": SubResource("AnimationLibrary_ncfrs")
+}
+autoplay = "objective_blurb"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ControlsIndicator1" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_a0tqp")
+
+[node name="ControlsIndicator2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_3u8y1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
+
+[node name="cheer_arm_left" parent="." instance=ExtResource("2_334ju")]
+position = Vector2(410, 541)
+scale = Vector2(2.7472801, 2.7472801)
+
+[node name="cheer_arm_right" parent="." instance=ExtResource("3_4a3w1")]
+position = Vector2(817, 541)
+scale = Vector2(2.7472801, 2.7472801)
+
+[node name="Confetti" parent="." instance=ExtResource("5_xmo8u")]
+position = Vector2(69.999985, 632)
+rotation = 0.7853982
+scale = Vector2(2, 2)
+
+[node name="Confetti2" parent="." instance=ExtResource("5_xmo8u")]
+position = Vector2(1100.0001, 632)
+rotation = -0.7853982
+scale = Vector2(2, 2)
+
+[connection signal="finished" from="cheer_arm_left" to="." method="_on_cheer_arm_left_finished"]
+[connection signal="finished" from="cheer_arm_right" to="." method="_on_cheer_arm_right_finished"]

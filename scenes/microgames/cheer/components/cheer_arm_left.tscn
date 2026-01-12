@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgkjn0iww3rcv"]
+
+[ext_resource type="Script" uid="uid://bkmtmr7nng4d" path="res://scripts/microgames/cheer/components/cheer_arm_left.gd" id="1_f0j0g"]
+[ext_resource type="Texture2D" uid="uid://barrjkexfa8a6" path="res://sprites/microgames/cheer/cheer_arm_left.png" id="1_q2dq8"]
+[ext_resource type="Script" uid="uid://bkrhoufn0qnyu" path="res://scripts/microgames/cheer/components/cheer_arm_left_characterbody2D.gd" id="2_0ooec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5akqc"]
+size = Vector2(20, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2dq8"]
+size = Vector2(51, 23)
+
+[node name="cheer_arm_left" type="Node2D"]
+script = ExtResource("1_f0j0g")
+
+[node name="arm_left" type="CharacterBody2D" parent="."]
+script = ExtResource("2_0ooec")
+
+[node name="Sprite2D" type="Sprite2D" parent="arm_left"]
+texture = ExtResource("1_q2dq8")
+offset = Vector2(0, -61)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arm_left"]
+position = Vector2(0, -63)
+shape = SubResource("RectangleShape2D_5akqc")
+
+[node name="swing_left" type="Area2D" parent="."]
+position = Vector2(-100.5, -13.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swing_left"]
+shape = SubResource("RectangleShape2D_q2dq8")
+
+[node name="swing_right" type="Area2D" parent="."]
+position = Vector2(100.5, -13.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swing_right"]
+shape = SubResource("RectangleShape2D_q2dq8")
+
+[connection signal="body_entered" from="swing_left" to="." method="_on_swing_left_body_entered"]
+[connection signal="body_entered" from="swing_right" to="." method="_on_swing_right_body_entered"]

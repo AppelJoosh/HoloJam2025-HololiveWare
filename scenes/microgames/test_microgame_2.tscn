@@ -1,11 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlkobsugtchu7"]
+[gd_scene load_steps=6 format=3 uid="uid://b4h4otke5rwv"]
 
 [ext_resource type="Script" uid="uid://dcsg86gk5iqif" path="res://scripts/MicrogameBase.gd" id="1_cks6i"]
+[ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_the_light/components/catch_drop_hand.tscn" id="2_joirm"]
+[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_e13cq"]
+[ext_resource type="PackedScene" uid="uid://5r551a41vkn3" path="res://scenes/microgames/catch_the_light/components/catch_player_hand.tscn" id="3_m7owm"]
+[ext_resource type="PackedScene" uid="uid://kbjs48g8avdj" path="res://scenes/microgames/catch_the_light/components/catch_glowstick.tscn" id="4_hflaq"]
 
 [node name="test_microgame" type="Control"]
 editor_description = "alt instance of a microgame using Control nodes instead of Node2D nodes, mainly because Control nodes are easier to resize"
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cks6i")
+control_type = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Catch_DropHand" parent="." instance=ExtResource("2_joirm")]
+position = Vector2(-18, -178)
+scale = Vector2(4.6404743, 4.6404743)
+
+[node name="Catch_PlayerHand" parent="." instance=ExtResource("3_m7owm")]
+position = Vector2(21, 188)
+scale = Vector2(4.785796, 4.785796)
+
+[node name="Catch_Glowstick" parent="." instance=ExtResource("4_hflaq")]
+position = Vector2(0, -179)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 32.128
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+editor_description = "ensures that the timer stays on the bottom left corner of the subviewport (window)"
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("3_e13cq")]
+position = Vector2(32, -16)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="release" from="Catch_DropHand" to="Catch_Glowstick" method="_on_catch_drop_hand_release"]
+[connection signal="body_entered" from="Catch_PlayerHand" to="Catch_Glowstick" method="_on_catch_player_hand_body_entered"]
+[connection signal="body_exited" from="Catch_PlayerHand" to="Catch_Glowstick" method="_on_catch_player_hand_body_exited"]
+[connection signal="catch" from="Catch_PlayerHand" to="Catch_Glowstick" method="_on_catch_player_hand_catch"]
+[connection signal="win_flag" from="Catch_Glowstick" to="." method="_on_catch_glowstick_win_flag"]

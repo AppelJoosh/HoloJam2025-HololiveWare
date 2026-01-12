@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://x34evnfmpgsy"]
+
+[ext_resource type="Script" uid="uid://cexs65yvoqkvs" path="res://scripts/microgames/dance_practice/dance_practice.gd" id="1_84b12"]
+[ext_resource type="Texture2D" uid="uid://bcfjn3j56i4fq" path="res://textures/HLW_DancePractice.png" id="2_foowm"]
+[ext_resource type="Texture2D" uid="uid://d4hp6i32gblln" path="res://sprites/sora.png" id="3_0jkwh"]
+[ext_resource type="Material" uid="uid://dkyuaxxsk3158" path="res://shaders/CharacterWiggleShaderMat.tres" id="3_4ew7w"]
+[ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_ee7a6"]
+[ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="4_y6njb"]
+[ext_resource type="Texture2D" uid="uid://pgpkn1ww3aja" path="res://sprites/microgames/dance_practice/DancePractice_Arrow.png" id="5_fud8q"]
+[ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="6_0jkwh"]
+
+[sub_resource type="Animation" id="Animation_rsdjj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncfrs"]
+_data = {
+&"RESET": SubResource("Animation_rsdjj"),
+&"objective_blurb": ExtResource("4_y6njb")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84b12"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84b12"]
+size = Vector2(512, 384)
+
+[node name="DancePractice" type="Control"]
+editor_description = "alt instance of a microgame using Control nodes instead of Node2D nodes, mainly because Control nodes are easier to resize"
+custom_minimum_size = Vector2(512, 384)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_84b12")
+control_type = 4
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_foowm")
+
+[node name="Player" type="Sprite2D" parent="."]
+material = ExtResource("3_4ew7w")
+position = Vector2(-64, 125)
+texture = ExtResource("3_0jkwh")
+offset = Vector2(0, -48)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 32.128
+
+[node name="DanceSequence" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.5
+anchor_right = 0.15
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_right = 392.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+editor_description = "ensures that the timer stays on the bottom left corner of the subviewport (window)"
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="MicrogameTimer" parent="CanvasLayer/Control" instance=ExtResource("3_ee7a6")]
+position = Vector2(32, -16)
+scale = Vector2(0.4, 0.4)
+max_time = 8.0
+
+[node name="Blurb" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "Dance Practice!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Blurb"]
+libraries = {
+&"": SubResource("AnimationLibrary_ncfrs")
+}
+autoplay = "objective_blurb"
+
+[node name="ControlsIndicator" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_0jkwh")
+
+[node name="Step0" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 262.0
+offset_top = 303.0
+offset_right = 326.0
+offset_bottom = 367.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_84b12")
+text = "↑"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_84b12")
+
+[node name="Step_" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchor_right = 0.055555556
+anchor_bottom = 0.09876543
+pivot_offset = Vector2(32, 32)
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="Sprite2D" parent="Step_"]
+position = Vector2(32, 32)
+texture = ExtResource("5_fud8q")
+
+[connection signal="on_timeout" from="CanvasLayer/Control/MicrogameTimer" to="." method="lose_on_time_up"]

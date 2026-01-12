@@ -1,0 +1,195 @@
+[gd_scene load_steps=8 format=3 uid="uid://evssynxry857"]
+
+[ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="1_85q8e"]
+[ext_resource type="Script" uid="uid://bu8fqt8spficr" path="res://scripts/end_scene.gd" id="1_nld2j"]
+[ext_resource type="Texture2D" uid="uid://cfoejpio1vudh" path="res://textures/HLW_OfficeInterior.png" id="1_s7dif"]
+
+[sub_resource type="Animation" id="Animation_wtt65"]
+resource_name = "EnterTransition"
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9833334, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_nld2j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_s7dif"]
+resource_name = "RetryTransition"
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.016666668, 1.0000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"retry"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7dif"]
+_data = {
+&"EnterTransition": SubResource("Animation_wtt65"),
+&"RESET": SubResource("Animation_nld2j"),
+&"RetryTransition": SubResource("Animation_s7dif")
+}
+
+[node name="EndScene" type="TextureRect"]
+material = ExtResource("1_85q8e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s7dif")
+script = ExtResource("1_nld2j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -235.0
+offset_right = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header1" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "The concert was a"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Header2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 72
+text = "SUCCESS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer1" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Header3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "FINAL SCORE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 72
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RetryButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Retry"
+
+[node name="BlackFadeTransition" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackFadeTransition"]
+libraries = {
+&"": SubResource("AnimationLibrary_s7dif")
+}
+autoplay = "EnterTransition"
+
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="play_retry_transition"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://kbjs48g8avdj"]
+
+[ext_resource type="Texture2D" uid="uid://cdtgi0i8fhci3" path="res://sprites/microgames/catch-the-light/glowstick_spritesheet.png" id="1_74bnw"]
+[ext_resource type="Script" uid="uid://baqalfeqiumum" path="res://scripts/microgames/catch-the-light/components/catch_glowstick.gd" id="1_nuup7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuup7"]
+size = Vector2(10, 86)
+
+[node name="Catch_Glowstick" type="RigidBody2D"]
+freeze = true
+script = ExtResource("1_nuup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -9)
+scale = Vector2(2.677, 2.677)
+texture = ExtResource("1_74bnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.677, 2.677)
+shape = SubResource("RectangleShape2D_nuup7")
