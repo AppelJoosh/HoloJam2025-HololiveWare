@@ -79,7 +79,7 @@ func add_new_microgame(microgameId: int) -> Microgame:
 	var microgame_resource: Resource = load(microgame_filepaths[microgameId])
 	var new_microgame: Microgame = microgame_resource.instantiate()
 	var new_microgame_control_type = microgame_control_types[microgameId]
-	new_microgame.speed_factor = 1.0 + score * 0.2 # gradually ramp up difficulty as score gets higher
+	new_microgame.speed_factor = 1.0 + score * 0.02 # gradually ramp up difficulty as score gets higher
 	
 	var subviewport = SubViewport.new()
 	
@@ -136,7 +136,8 @@ func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
 	old_microgame_despawn_timer.start(0.5)
 	
 	# spawn the next microgame after some time, and free that timer to prevent memory leaks
-	if (len(microgame_container.get_children()) < MAX_ACTIVE_MICROGAMES):
+	#if (len(microgame_container.get_children()) < MAX_ACTIVE_MICROGAMES):
+	if get_active_microgame_count() + 1 < MAX_ACTIVE_MICROGAMES:
 		#var new_microgame_index = get_next_microgame_index()
 		var new_microgame_spawn_timer = Timer.new()
 		#new_microgame_spawn_timer.timeout.connect(add_new_microgame.bind(new_microgame_index))
@@ -144,6 +145,13 @@ func on_microgame_finish(success: bool, microgame_window: SubViewportContainer):
 		new_microgame_spawn_timer.timeout.connect(new_microgame_spawn_timer.queue_free)
 		add_child(new_microgame_spawn_timer)
 		new_microgame_spawn_timer.start(1.0)
+		
+func get_active_microgame_count():
+	var count = 0
+	for n in microgame_container.get_children():
+		var m : Microgame = n.get_child(0).get_child(0)
+		count += 1 if m.is_active else 0
+	return count
 
 func free_microgame_control_type_on_finish(_win_state: bool, control_type: int):
 	active_microgame_control_types ^= control_type

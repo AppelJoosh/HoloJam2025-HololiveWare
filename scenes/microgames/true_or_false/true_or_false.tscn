@@ -175,7 +175,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Question"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -192,6 +192,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("5_84ebj")
 
+[connection signal="on_finish" from="." to="." method="_on_finish"]
 [connection signal="on_timeout" from="CanvasLayer/Control/MicrogameTimer" to="." method="lose_on_time_up"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/TrueBlock" to="." method="on_answer" binds= [true]]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/FalseBlock" to="." method="on_answer" binds= [false]]

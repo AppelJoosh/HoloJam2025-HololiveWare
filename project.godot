@@ -14,6 +14,7 @@ config/name="HololiveWare"
 run/main_scene="uid://1xb1lbqwjdjv"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
+boot_splash/image="uid://7f4y1pwlsyf1"
 config/icon="res://icon.svg"
 
 [autoload]

@@ -9,14 +9,14 @@ var player_movement = Vector2()
 func _ready() -> void:
 	super()
 	win_on_timeout = true
-	var hazard_count = 2 + floor(speed_factor * 0.12)
+	var hazard_count = 2 + floor(speed_factor * 1.44)
 	for i in range(hazard_count):
 		var new_hazard : MG05_Hazard = hazard_base.duplicate()
-		new_hazard.speed *= speed_factor
 		add_child(new_hazard)
+		new_hazard.speed *= speed_factor
 
 func _physics_process(_delta: float) -> void:
-	player.move_and_collide(player_movement * player_speed)
+	player.move_and_collide(player_movement * player_speed * speed_factor)
 
 func _input(_event: InputEvent) -> void:
 	player_movement = Input.get_vector("A", "D", "W", "S")

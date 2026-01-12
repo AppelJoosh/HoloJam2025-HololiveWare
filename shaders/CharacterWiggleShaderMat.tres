@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b53pmhaulx38s"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dkyuaxxsk3158"]
 
-[sub_resource type="Shader" id="Shader_27l4j"]
+[sub_resource type="Shader" id="Shader_3j64u"]
 code = "shader_type canvas_item;
 
 void vertex() {
@@ -24,6 +24,6 @@ void fragment() {
 "
 
 [resource]
-shader = SubResource("Shader_27l4j")
-shader_parameter/strength = 0.01
+shader = SubResource("Shader_3j64u")
+shader_parameter/strength = 0.02
 shader_parameter/wait = 0.017

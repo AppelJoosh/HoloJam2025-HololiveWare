@@ -26,11 +26,13 @@ func _ready() -> void:
 	question_index = randi_range(0, len(tf_questions) - 1)
 	question_label.text = tf_questions[question_index][0]
 	correct_answer = tf_questions[question_index][1]
-
-func on_answer(answer: bool):
-	print(answer)
+	
+func _on_finish(_state: bool):
 	true_block.disabled = true
 	false_block.disabled = true
+	
+func on_answer(answer: bool):
+	print(answer)
 	if (correct_answer):
 		true_block.self_modulate = Color.WEB_GREEN
 		false_block.self_modulate = Color.FIREBRICK

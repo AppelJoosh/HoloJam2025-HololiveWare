@@ -12,7 +12,7 @@ var merch_collected = 0
 func _ready() -> void:
 	super()
 	win_on_timeout = false
-	merch_count = 2 + floor(speed_factor * 0.5)
+	merch_count = 2 + floor(speed_factor * 2.6)
 	for i in range(merch_count):
 		var new_merch : Area2D = merch_base.duplicate()
 		new_merch.position = Vector2(randf_range(375, 800), randf_range(175, 490))
@@ -20,7 +20,7 @@ func _ready() -> void:
 		add_child(new_merch)
 
 func _physics_process(_delta: float) -> void:
-	player.move_and_collide(player_movement * player_speed)
+	player.move_and_collide(player_movement * player_speed * speed_factor)
 
 func _input(_event: InputEvent) -> void:
 	player_movement = Input.get_vector("LeftArrow", "RightArrow", "UpArrow", "DownArrow")

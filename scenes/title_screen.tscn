@@ -110,9 +110,11 @@ theme = SubResource("Theme_sa3yf")
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6509804, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
-theme_override_font_sizes/font_size = 72
-text = "HololiveWare"
+theme_override_font_sizes/font_size = 84
+text = "HoloHUSTLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 

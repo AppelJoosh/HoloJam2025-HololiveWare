@@ -3,7 +3,7 @@ extends "res://scripts/MicrogameBase.gd"
 var targets_hit = 0;
 @export var targets_required = 2;
 
-var shoot_direction = Vector2(0, -15)
+var shoot_direction = Vector2(0, -6)
 
 @onready var player : CharacterBody2D = $Player
 var player_movement = Vector2()
@@ -12,18 +12,20 @@ var player_movement = Vector2()
 @onready var ticket_base = $Ticket
 @onready var target_base = $Target
 
-func _init():
-	targets_required = 2 + floor(speed_factor * 0.35)
-
 func _ready() -> void:
 	super()
 	
+	targets_required = 2 + floor(speed_factor * 0.9)
+	target_base.position = Vector2(-400, 400)
+	shoot_direction *= speed_factor
+	
 	for i in range(targets_required):
 		var new_target : MG04_Target = target_base.duplicate();
-		new_target.ticket_received.connect(on_target_ticket_received)
-		new_target.position = Vector2(randi_range(420, 750), 185 + i * 75)
-		new_target.show()
 		add_child(new_target)
+		new_target.ticket_received.connect(on_target_ticket_received)
+		new_target.position = Vector2(randi_range(420, 750), 150 + (i % 4) * 75)
+		new_target.speed *= speed_factor
+		new_target.show()
 	
 func _physics_process(_delta: float) -> void:
 	#player.position += player_movement

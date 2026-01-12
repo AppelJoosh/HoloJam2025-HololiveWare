@@ -22,4 +22,5 @@ func _physics_process(_delta: float) -> void:
 		
 func receive_ticket():
 	has_hit = true
+	modulate = Color.WHITE
 	ticket_received.emit()

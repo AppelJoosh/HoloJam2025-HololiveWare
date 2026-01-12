@@ -11,7 +11,7 @@ var input_dict = {Key.KEY_UP: 0, Key.KEY_RIGHT: 90, Key.KEY_DOWN: 180, Key.KEY_L
 
 func _ready() -> void:
 	super()
-	for i in range(10 + floor(speed_factor)):
+	for i in range(10 + floor(speed_factor * 2)):
 		var next_step : Control = step_base.duplicate()
 		#next_step.text = possible_steps[randi_range(0, len(possible_steps) - 1)]
 		#print(input_dict.values())
