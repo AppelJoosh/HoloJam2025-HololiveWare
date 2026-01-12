@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmc8r2amifdcp"]
+[gd_scene load_steps=17 format=3 uid="uid://dmc8r2amifdcp"]
 
 [ext_resource type="Script" uid="uid://dae1opblhbswb" path="res://scripts/microgames/distribute_tickets/microgame_distribute_tickets.gd" id="1_rsdjj"]
 [ext_resource type="Texture2D" uid="uid://v3e7xc8mnpel" path="res://textures/HLW_Street.png" id="2_14wus"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_4o5ap"]
 [ext_resource type="Script" uid="uid://bjwgjpdqtntyt" path="res://scripts/microgames/distribute_tickets/target.gd" id="3_6k3vb"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="4_rsdjj"]
+[ext_resource type="Texture2D" uid="uid://jm1mm1rj2jc4" path="res://sprites/microgames/distribute_tickets/ticket.png" id="5_48etp"]
 [ext_resource type="Script" uid="uid://ddp3j57e07dud" path="res://scripts/microgames/distribute_tickets/ticket.gd" id="5_ncfrs"]
+[ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="8_15ynx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k3vb"]
 size = Vector2(128, 128)
@@ -110,7 +112,7 @@ visible = false
 self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
 position = Vector2(533, 407)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_rsdjj")
+texture = ExtResource("5_48etp")
 script = ExtResource("5_ncfrs")
 
 [node name="Area2D" type="Area2D" parent="Ticket"]
@@ -190,6 +192,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
+
+[node name="ControlsIndicator" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_15ynx")
 
 [connection signal="body_entered" from="Ticket/Area2D" to="Ticket" method="on_target_hit"]
 [connection signal="timeout" from="Ticket/Timer" to="Ticket" method="queue_free"]

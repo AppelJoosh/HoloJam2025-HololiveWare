@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dodltvf8dranb"]
+[gd_scene load_steps=11 format=3 uid="uid://dodltvf8dranb"]
 
 [ext_resource type="Script" uid="uid://cp750de340wq0" path="res://scripts/microgames/cheer/cheer.gd" id="1_np5h8"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="1_rdiuh"]
 [ext_resource type="PackedScene" uid="uid://dgkjn0iww3rcv" path="res://scenes/microgames/cheer/components/cheer_arm_left.tscn" id="2_334ju"]
 [ext_resource type="PackedScene" uid="uid://c2ydm1ng1xrjs" path="res://scenes/microgames/cheer/components/cheer_arm_right.tscn" id="3_4a3w1"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="3_nevdi"]
+[ext_resource type="Texture2D" uid="uid://dw18r4y1jxdd7" path="res://sprites/control_indicators/ci_wasd.png" id="4_a0tqp"]
+[ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="5_3u8y1"]
 [ext_resource type="PackedScene" uid="uid://b8c0wqh4tocbp" path="res://scenes/confetti.tscn" id="5_xmo8u"]
 
 [sub_resource type="Animation" id="Animation_rsdjj"]
@@ -94,6 +96,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ControlsIndicator1" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_a0tqp")
+
+[node name="ControlsIndicator2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_3u8y1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

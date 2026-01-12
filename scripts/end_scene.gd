@@ -8,7 +8,7 @@ extends TextureRect
 func _ready() -> void:
 	score_label.text = str(GlobalVars.final_score)
 	
-	if GlobalVars.final_score >= 30:
+	if GlobalVars.final_score >= 20:
 		variable_header.text = "SUCCESS!!"
 		texture = load("res://textures/HLW_Stage.png")
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cowmn748v64j6"]
+[gd_scene load_steps=10 format=3 uid="uid://cowmn748v64j6"]
 
 [ext_resource type="Script" uid="uid://qsivxvlesgp" path="res://scripts/microgames/catch-the-light/catch_the_light.gd" id="1_6g1d2"]
 [ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_the_light/components/catch_drop_hand.tscn" id="2_ppika"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kbjs48g8avdj" path="res://scenes/microgames/catch_the_light/components/catch_glowstick.tscn" id="4_hk416"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_cgc7q"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_hk416"]
+[ext_resource type="Texture2D" uid="uid://dl4c78qo83ksr" path="res://sprites/control_indicators/ci_spacebar.png" id="7_5whio"]
 
 [sub_resource type="Animation" id="Animation_rsdjj"]
 length = 0.001
@@ -105,6 +106,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
+
+[node name="ControlsIndicator" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_5whio")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

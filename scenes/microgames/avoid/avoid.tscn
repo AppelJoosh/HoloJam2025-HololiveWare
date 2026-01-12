@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4bhrll2soan8"]
+[gd_scene load_steps=19 format=3 uid="uid://b4bhrll2soan8"]
 
 [ext_resource type="Script" uid="uid://b5r4t3p5qyc43" path="res://scripts/microgames/avoid/avoid.gd" id="1_s28cg"]
 [ext_resource type="Texture2D" uid="uid://cqll4javfrq5" path="res://textures/HLW_WhiteGrid.png" id="2_1rs76"]
@@ -6,7 +6,9 @@
 [ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="2_s28cg"]
 [ext_resource type="Script" uid="uid://dwpv87ohrg7lv" path="res://scripts/microgames/avoid/hazard.gd" id="3_rat54"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_iqam8"]
+[ext_resource type="Texture2D" uid="uid://bf8a8hmbgkgfo" path="res://sprites/microgames/avoid/hazard.png" id="6_fq6j6"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_xatth"]
+[ext_resource type="Texture2D" uid="uid://dw18r4y1jxdd7" path="res://sprites/control_indicators/ci_wasd.png" id="8_2qpm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15ynx"]
 size = Vector2(512, 384)
@@ -16,6 +18,37 @@ size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s28cg"]
 size = Vector2(128, 128)
+
+[sub_resource type="Shader" id="Shader_fq6j6"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+uniform float strength = 0.01;
+uniform float wait = 1.0;
+
+float random (vec2 uv, float x) {
+    return fract(sin(dot(uv.xy, vec2(12.9898,78.233)) * x) * 43758.5453123);
+}
+
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	float random_x = (random(UV, UV.y * floor(TIME / wait)) - 0.5) * strength;
+	float random_y = (random(UV, UV.x * floor(TIME / wait)) - 0.5) * strength;
+	COLOR = texture(TEXTURE, UV + vec2(random_x, random_y));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3w4b"]
+shader = SubResource("Shader_fq6j6")
+shader_parameter/strength = 0.08
+shader_parameter/wait = 0.017
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq6j6"]
+radius = 42.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14wus"]
 size = Vector2(1024, 1024)
@@ -104,11 +137,14 @@ scale = Vector2(0.4, 0.4)
 script = ExtResource("3_rat54")
 
 [node name="Sprite" type="Sprite2D" parent="Hazard"]
-modulate = Color(1, 0.5019608, 0, 1)
-texture = ExtResource("2_qgqlf")
+material = SubResource("ShaderMaterial_j3w4b")
+texture = ExtResource("6_fq6j6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
-shape = SubResource("RectangleShape2D_s28cg")
+shape = SubResource("CircleShape2D_fq6j6")
+
+[node name="Timer" type="Timer" parent="Hazard"]
+autostart = true
 
 [node name="Wall_1" type="StaticBody2D" parent="."]
 position = Vector2(-146, 320)
@@ -177,6 +213,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
+
+[node name="ControlsIndicator" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_2qpm0")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(800, 490)

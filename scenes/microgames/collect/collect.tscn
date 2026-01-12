@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://pxifs6u4vi6i"]
+[gd_scene load_steps=15 format=3 uid="uid://pxifs6u4vi6i"]
 
 [ext_resource type="Script" uid="uid://bga05o4why6si" path="res://scripts/microgames/collect/microgame_collect.gd" id="1_n3y4s"]
 [ext_resource type="Texture2D" uid="uid://ci4mhg4qm4en7" path="res://textures/HLW_OfficeTopDown.png" id="2_fj0n3"]
 [ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="2_oqkxb"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="3_j6ntp"]
+[ext_resource type="Texture2D" uid="uid://dx2mf0epug70i" path="res://sprites/microgames/collect/merch.png" id="5_d0pl6"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_poto2"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_oup4j"]
+[ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="7_cnfet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj0n3"]
 size = Vector2(512, 384)
@@ -101,8 +103,7 @@ position = Vector2(64.00003, 880.99994)
 scale = Vector2(0.4, 0.4)
 
 [node name="Sprite" type="Sprite2D" parent="Merch"]
-modulate = Color(1, 0.5019608, 0, 1)
-texture = ExtResource("3_j6ntp")
+texture = ExtResource("5_d0pl6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Merch"]
 shape = SubResource("RectangleShape2D_s28cg")
@@ -174,6 +175,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
+
+[node name="ControlsIndicator" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_cnfet")
 
 [connection signal="area_entered" from="Player/Area2D" to="." method="merch_collect"]
 [connection signal="on_timeout" from="CanvasLayer/Control/MicrogameTimer" to="." method="lose_on_time_up"]

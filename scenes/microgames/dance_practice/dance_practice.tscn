@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://x34evnfmpgsy"]
+[gd_scene load_steps=12 format=3 uid="uid://x34evnfmpgsy"]
 
 [ext_resource type="Script" uid="uid://cexs65yvoqkvs" path="res://scripts/microgames/dance_practice/dance_practice.gd" id="1_84b12"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_84b12"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_ee7a6"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="4_y6njb"]
 [ext_resource type="Texture2D" uid="uid://pgpkn1ww3aja" path="res://sprites/microgames/dance_practice/DancePractice_Arrow.png" id="5_fud8q"]
+[ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="6_0jkwh"]
 
 [sub_resource type="Animation" id="Animation_rsdjj"]
 length = 0.001
@@ -118,6 +119,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncfrs")
 }
 autoplay = "objective_blurb"
+
+[node name="ControlsIndicator" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_0jkwh")
 
 [node name="Step0" type="Label" parent="."]
 visible = false
