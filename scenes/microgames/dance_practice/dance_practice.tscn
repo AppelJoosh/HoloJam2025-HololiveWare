@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://x34evnfmpgsy"]
 
-[ext_resource type="Script" uid="uid://cexs65yvoqkvs" path="res://scenes/microgames/dance_practice/dance_practice.gd" id="1_84b12"]
+[ext_resource type="Script" uid="uid://cexs65yvoqkvs" path="res://scripts/microgames/dance_practice/dance_practice.gd" id="1_84b12"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_84b12"]
 [ext_resource type="Texture2D" uid="uid://bcfjn3j56i4fq" path="res://textures/HLW_DancePractice.png" id="2_foowm"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_ee7a6"]

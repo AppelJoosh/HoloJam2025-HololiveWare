@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://pxifs6u4vi6i"]
 
-[ext_resource type="Script" uid="uid://bga05o4why6si" path="res://scenes/microgames/collect/microgame_collect.gd" id="1_n3y4s"]
+[ext_resource type="Script" uid="uid://bga05o4why6si" path="res://scripts/microgames/collect/microgame_collect.gd" id="1_n3y4s"]
 [ext_resource type="Texture2D" uid="uid://ci4mhg4qm4en7" path="res://textures/HLW_OfficeTopDown.png" id="2_fj0n3"]
 [ext_resource type="Material" uid="uid://b53pmhaulx38s" path="res://shaders/WiggleShaderMaterial.tres" id="2_oqkxb"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="3_j6ntp"]

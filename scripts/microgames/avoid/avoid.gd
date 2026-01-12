@@ -8,7 +8,6 @@ var player_movement = Vector2()
 
 func _ready() -> void:
 	super()
-	blurb = "Avoid!"
 	win_on_timeout = true
 	var hazard_count = 2 + floor(speed_factor * 0.12)
 	for i in range(hazard_count):

@@ -11,7 +11,7 @@ var merch_collected = 0
 
 func _ready() -> void:
 	super()
-	win_on_timeout = true
+	win_on_timeout = false
 	merch_count = 2 + floor(speed_factor * 0.5)
 	for i in range(merch_count):
 		var new_merch : Area2D = merch_base.duplicate()

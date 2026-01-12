@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://dmc8r2amifdcp"]
 
-[ext_resource type="Script" uid="uid://dae1opblhbswb" path="res://scenes/microgames/distribute_tickets/microgame_distribute_tickets.gd" id="1_rsdjj"]
+[ext_resource type="Script" uid="uid://dae1opblhbswb" path="res://scripts/microgames/distribute_tickets/microgame_distribute_tickets.gd" id="1_rsdjj"]
 [ext_resource type="Texture2D" uid="uid://v3e7xc8mnpel" path="res://textures/HLW_Street.png" id="2_14wus"]
 [ext_resource type="Texture2D" uid="uid://dd0j5awbhu2xk" path="res://icon.svg" id="2_rsdjj"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_4o5ap"]
-[ext_resource type="Script" uid="uid://bjwgjpdqtntyt" path="res://scenes/microgames/distribute_tickets/target.gd" id="3_6k3vb"]
+[ext_resource type="Script" uid="uid://bjwgjpdqtntyt" path="res://scripts/microgames/distribute_tickets/target.gd" id="3_6k3vb"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="4_rsdjj"]
-[ext_resource type="Script" uid="uid://ddp3j57e07dud" path="res://scenes/microgames/distribute_tickets/ticket.gd" id="5_ncfrs"]
+[ext_resource type="Script" uid="uid://ddp3j57e07dud" path="res://scripts/microgames/distribute_tickets/ticket.gd" id="5_ncfrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k3vb"]
 size = Vector2(128, 128)

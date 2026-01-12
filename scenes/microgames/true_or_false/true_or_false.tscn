@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d01lo6ka75oqj"]
 
-[ext_resource type="Script" uid="uid://cgvcwgbe4olar" path="res://scenes/microgames/true_or_false/true_or_false.gd" id="1_cexi6"]
+[ext_resource type="Script" uid="uid://cgvcwgbe4olar" path="res://scripts/microgames/true_or_false/true_or_false.gd" id="1_cexi6"]
 [ext_resource type="Texture2D" uid="uid://dunw686atd167" path="res://sprites/placeholdertoforcefolder.png" id="2_6h405"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="3_eh3wd"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="4_vd7m6"]
