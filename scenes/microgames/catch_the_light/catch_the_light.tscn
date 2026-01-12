@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cowmn748v64j6"]
+[gd_scene load_steps=11 format=3 uid="uid://cowmn748v64j6"]
 
 [ext_resource type="Script" uid="uid://qsivxvlesgp" path="res://scripts/microgames/catch-the-light/catch_the_light.gd" id="1_6g1d2"]
 [ext_resource type="PackedScene" uid="uid://dgvwo75ug0sdb" path="res://scenes/microgames/catch_the_light/components/catch_drop_hand.tscn" id="2_ppika"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="5_cgc7q"]
 [ext_resource type="Animation" uid="uid://be6i7wttdwa3f" path="res://objects/objective_blurb_animation.res" id="6_hk416"]
 [ext_resource type="Texture2D" uid="uid://dl4c78qo83ksr" path="res://sprites/control_indicators/ci_spacebar.png" id="7_5whio"]
+[ext_resource type="Texture2D" uid="uid://drfh1wbqqysev" path="res://textures/HLW_Stage.png" id="8_31xgi"]
 
 [sub_resource type="Animation" id="Animation_rsdjj"]
 length = 0.001
@@ -51,16 +52,10 @@ grow_vertical = 2
 script = ExtResource("1_6g1d2")
 control_type = 8
 
-[node name="Catch_DropHand" parent="." instance=ExtResource("2_ppika")]
-position = Vector2(590, 174)
-scale = Vector2(4.6404743, 4.6404743)
-
-[node name="Catch_PlayerHand" parent="." instance=ExtResource("3_cgc7q")]
-position = Vector2(629, 540)
-scale = Vector2(4.785796, 4.785796)
-
-[node name="Catch_Glowstick" parent="." instance=ExtResource("4_hk416")]
-position = Vector2(608, 173)
+[node name="HlwStage" type="Sprite2D" parent="."]
+position = Vector2(591.00006, 142)
+scale = Vector2(2.2187502, 2.2187502)
+texture = ExtResource("8_31xgi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 32.128
@@ -118,6 +113,17 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("7_5whio")
+
+[node name="Catch_DropHand" parent="." instance=ExtResource("2_ppika")]
+position = Vector2(590, 174)
+scale = Vector2(4.6404743, 4.6404743)
+
+[node name="Catch_PlayerHand" parent="." instance=ExtResource("3_cgc7q")]
+position = Vector2(629, 540)
+scale = Vector2(4.785796, 4.785796)
+
+[node name="Catch_Glowstick" parent="." instance=ExtResource("4_hk416")]
+position = Vector2(608, 173)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

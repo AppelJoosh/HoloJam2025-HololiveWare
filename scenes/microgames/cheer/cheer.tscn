@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dodltvf8dranb"]
+[gd_scene load_steps=12 format=3 uid="uid://dodltvf8dranb"]
 
 [ext_resource type="Script" uid="uid://cp750de340wq0" path="res://scripts/microgames/cheer/cheer.gd" id="1_np5h8"]
 [ext_resource type="PackedScene" uid="uid://8ertkuvyafv8" path="res://objects/microgame_timer.tscn" id="1_rdiuh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dw18r4y1jxdd7" path="res://sprites/control_indicators/ci_wasd.png" id="4_a0tqp"]
 [ext_resource type="Texture2D" uid="uid://doe816ccae1y0" path="res://sprites/control_indicators/ci_arrowkeys.png" id="5_3u8y1"]
 [ext_resource type="PackedScene" uid="uid://b8c0wqh4tocbp" path="res://scenes/confetti.tscn" id="5_xmo8u"]
+[ext_resource type="Texture2D" uid="uid://drfh1wbqqysev" path="res://textures/HLW_Stage.png" id="9_3u8y1"]
 
 [sub_resource type="Animation" id="Animation_rsdjj"]
 length = 0.001
@@ -51,6 +52,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_np5h8")
 control_type = 3
+
+[node name="HlwStage" type="Sprite2D" parent="."]
+position = Vector2(593, 185)
+scale = Vector2(2.0916667, 2.0916667)
+texture = ExtResource("9_3u8y1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 32.128
